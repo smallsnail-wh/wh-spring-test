@@ -1,12 +1,9 @@
-package com.wh.demo.test.async;
+package com.wh.demo.test.listener;
 
 import org.springframework.context.ApplicationEvent;
 
 public class MyApplicationEvent extends ApplicationEvent{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -543396148689229096L;
 	
 	private final String address;

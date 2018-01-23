@@ -1,4 +1,4 @@
-package com.wh.demo.test.async;
+/*package com.wh.demo.test.listener;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -7,9 +7,10 @@ import org.springframework.stereotype.Component;
 public class MyApplicationListener implements ApplicationListener<MyApplicationEvent>{
 
     public void onApplicationEvent(MyApplicationEvent event) {
-    	System.out.println("this is my listener1");
+    	System.out.println("my listener start");
     	System.out.println(event.toString());
-    	System.out.println("this is my listener2");
+    	System.out.println("my listener end");
     }
 
 }
+*/

@@ -8,7 +8,6 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
@@ -21,10 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.wh.demo.test.async.MyApplicationEvent;
-import com.wh.demo.test.async.MyApplicationEventService;
-import com.wh.demo.test.async.MyTestListener;
-import com.wh.demo.test.exception.UserNotExistException;
 import com.wh.demo.test.model.UserEntity;
 import com.wh.demo.test.model.UserEntity.UserEntityDetailView;
 import com.wh.demo.test.model.UserEntity.UserEntitySimpleView;
@@ -42,12 +37,6 @@ public class UserController {
 	@GetMapping("/user/{id}")
 	@JsonView(UserEntitySimpleView.class)
 	public UserEntity userGet(@PathVariable int id) {
-		if(id == 1) {
-			throw new UserNotExistException("id不能为1");
-		}
-		if(id == 2) {
-			throw new RuntimeException("id不能为2");
-		}
 		System.out.println("controller !!");
 		UserEntity userEntity = userService.getUserById(id);
 		log.debug("The method is ending");
@@ -84,16 +73,5 @@ public class UserController {
 		System.out.println(userEntity.toString());
 		userEntity.setId(1);
 		return userEntity;
-	}
-	
-	@Autowired
-	private MyApplicationEventService myApplicationEventService;
-	
-	@GetMapping("/listener")
-	public String testMyListener() {
-		/*myApplicationEventService.sendEmail("john.doe@example.org", "123123"); */
-		myApplicationEventService.testListener("john.doe@example.org", "123");
-		/*new MyTestListener().testListenr(new MyApplicationEvent(new Object(),"wanghaun", "123123"));*/
-		return "SUCCESS";
 	}
 }

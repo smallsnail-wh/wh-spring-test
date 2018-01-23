@@ -1,9 +1,6 @@
 package com.wh.demo.test.async;
 
-import java.util.concurrent.Callable;
-
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.ibatis.executor.result.DefaultResultHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

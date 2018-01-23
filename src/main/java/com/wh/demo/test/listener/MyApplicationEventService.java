@@ -1,4 +1,4 @@
-package com.wh.demo.test.async;
+package com.wh.demo.test.listener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +23,7 @@ public class MyApplicationEventService implements ApplicationEventPublisherAware
     	blackList.add("known.hacker@example.org");
     	blackList.add("john.doe@example.org");
         if (blackList.contains(address)) {
-        	MyApplicationEvent event = new MyApplicationEvent(this, address, text);
-            publisher.publishEvent(event);
+            publisher.publishEvent(new MyApplicationEvent(this, address, text));
             return;
         }
         // send email...

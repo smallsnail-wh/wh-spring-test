@@ -1,4 +1,4 @@
-package com.wh.demo.test.async;
+package com.wh.demo.test.listener;
 
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyTestListener {
 
-	@EventListener(condition="#event.test == '123'")
+	@EventListener
 	public void testListenr(MyApplicationEvent event) {
 		System.out.println("this is testListener1");
 		System.out.println(event.toString());
