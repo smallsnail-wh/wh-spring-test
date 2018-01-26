@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/exception")
 public class ExceptionTestController {
 
-	@GetMapping("/test/{id}")
+	@GetMapping("/{id}")
 	public String test(@PathVariable(name="id") Integer id) throws MyException {
 		
 		if(id == 1) {

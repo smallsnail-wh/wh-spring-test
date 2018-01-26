@@ -1,4 +1,4 @@
-package com.wh.demo.test.config;
+/*package com.wh.demo.test.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -19,3 +19,4 @@ public class TimeInterceptorConfig implements WebMvcConfigurer {
 	}
 
 }
+*/

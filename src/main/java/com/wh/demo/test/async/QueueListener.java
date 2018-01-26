@@ -4,11 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
-import org.springframework.web.context.support.RequestHandledEvent;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.stereotype.Component;
 
 
-//@Component
-public class QueueListener implements ApplicationListener<RequestHandledEvent> {
+public class QueueListener implements ApplicationListener<ContextRefreshedEvent> {
 
 	Logger log = LoggerFactory.getLogger(getClass());
 	
@@ -17,12 +17,14 @@ public class QueueListener implements ApplicationListener<RequestHandledEvent> {
 	
 	@Autowired
 	private DeferredResultHolder deferredResultHolder;
+	
+	@Autowired
+	private DeferredResultEntity deferredResultEntity;
 
 	@Override
-	public void onApplicationEvent(RequestHandledEvent event) {
-		System.out.println("this is listener");
+	public void onApplicationEvent(ContextRefreshedEvent event) {
 		/*new Thread(() ->{
-			a:while(true) {
+			while(true) {
 				if(StringUtils.isNotBlank(myQueue.getCompleteOrder())) {
 					
 					String orderNumber = myQueue.getCompleteOrder();
@@ -31,10 +33,8 @@ public class QueueListener implements ApplicationListener<RequestHandledEvent> {
 					
 					myQueue.setCompleteOrder(null);
 					System.out.println("this listener break");
-					break a;
 				}else {
 					try {
-						System.out.println("this is listener");
 						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
