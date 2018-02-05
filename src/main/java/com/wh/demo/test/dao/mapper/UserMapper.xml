@@ -24,4 +24,8 @@
 			login_name = #{loginName}
 		</where>
 	</select>
+	
+	<select id="userAll" resultMap="userMap">
+		call test2()
+	</select>
 </mapper>

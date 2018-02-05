@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wh.demo.test.dao.TestDao">
+
+	<insert id="insert10000">
+		insert into test(name,login_name,password,email) 
+		values(#{testEntity.name},#{testEntity.loginName},#{testEntity.password},#{testEntity.email})
+	</insert>
+	
+</mapper>

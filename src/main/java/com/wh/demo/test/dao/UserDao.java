@@ -1,5 +1,7 @@
 package com.wh.demo.test.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -20,5 +22,11 @@ public interface UserDao {
 	 * @return
 	 */
 	public UserEntity getUserEntityByLoginName(@Param("loginName") String loginName);
+
+	/**
+	 * 测试
+	 * @return
+	 */
+	public List<UserEntity> userAll();
 	
 }

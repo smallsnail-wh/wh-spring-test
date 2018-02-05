@@ -51,7 +51,6 @@ public class WhTestApplicationTests {
 	@Test
 	public void testClient() {
 		this.mockRestServiceServer.expect(requestTo("/test/1")).andRespond(withSuccess());
-		System.out.println("123");
 	}
 
 }
