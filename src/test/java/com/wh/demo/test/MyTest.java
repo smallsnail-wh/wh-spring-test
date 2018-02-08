@@ -10,30 +10,79 @@ import java.util.Vector;
 import org.junit.Test;
 
 public class MyTest {
-	int[] R = { 3, 8, 13, 4, 465, 9, 46, 62, 1, 102, 78 };
+	int[] R = { 8, 3, 13, 4, 465, 9, 46, 62, 1, 102, 78 };
+	int[] arrayTemp = { 8, 3, 13, 4, 465, 9, 46, 62, 1, 102, 78 };
+	int[] r = { 1, 3, 4, 8, 9, 13, 46, 62, 78, 102, 465 };
 
-	public void hebinmMethod(int [] array,int start,int end,int [] arrayTemp) {
-		int mid = (start+end)/2;
+	@Test
+	public void guibinSrot() {
+		fenMenthod(R, 0, R.length-1, arrayTemp);
+		/* hebinmMethod(R,0,3,arrayTemp); */
+		printArray(R);
+	}
+
+	public void fenMenthod(int[] array, int start, int end, int[] arrayTemp) {
+		if (start >= end) {
+			return;
+		}
+		int mid = (start + end) / 2;
+		fenMenthod(array, start, mid, arrayTemp);
+		fenMenthod(array, mid + 1, end, arrayTemp);
+		hebinmMethod(array, start, end, arrayTemp);
+	}
+
+	public void hebinmMethod(int[] array, int start, int end, int[] arrayTemp) {
+		int mid = (start + end) / 2;
 		int startTemp = start;
-		int endTemp = end;
+		int index = start;
 		int midTemp = mid;
-		while(startTemp<=mid || midTemp<=endTemp) {
-			if(array[startTemp]<=array[midTemp]) {
-				arrayTemp[startTemp] = array[startTemp];
+		while (startTemp <= mid && midTemp + 1 <= end) {
+			if (array[startTemp] <= array[midTemp + 1]) {
+				arrayTemp[index] = array[startTemp];
 				startTemp++;
-			}else if(array[startTemp]>array[midTemp]) {
-				arrayTemp[midTemp] = array[midTemp];
+				index++;
+			} else if (array[startTemp] > array[midTemp + 1]) {
+				arrayTemp[index] = array[midTemp + 1];
 				midTemp++;
+				index++;
 			}
 		}
-		while(startTemp<=mid) {
-			
+		while (startTemp <= mid) {
+			arrayTemp[index] = array[startTemp];
+			startTemp++;
+			index++;
 		}
-		while(midTemp<=endTemp) {
-			
+		while (midTemp + 1 <= end) {
+			arrayTemp[index] = array[midTemp + 1];
+			midTemp++;
+			index++;
+		}
+		for(int i = start;i<=end;i++) {
+			array[i]=arrayTemp[i];
 		}
 	}
-	
+
+	@Test
+	public void erfen() {
+		int i = 4;
+		int length = r.length;
+		int start = 0;
+		int end = length;
+		int mid;
+		while (start <= end) {
+			mid = (start + end) / 2;
+			if (i > r[mid]) {
+				start = mid + 1;
+			} else if (i < r[mid]) {
+				end = mid - 1;
+			} else if (i == r[mid]) {
+				System.out.println(mid + 1);
+				return;
+			}
+		}
+		System.out.println("not exist");
+	}
+
 	@Test
 	public void erfenSort() {
 		int lenght = R.length;
@@ -45,7 +94,7 @@ public class MyTest {
 			low = 0;
 			high = i - 1;
 			while (low <= high) {
-				mid = (high+low)/2;
+				mid = (high + low) / 2;
 				if (R[i] > R[mid]) {
 					low = mid + 1;
 				} else if (R[i] < R[mid]) {
@@ -55,8 +104,8 @@ public class MyTest {
 				}
 			}
 			temp = R[i];
-			for(int j = i-1;j>=low;j--) {
-				R[j+1] = R[j];
+			for (int j = i - 1; j >= low; j--) {
+				R[j + 1] = R[j];
 			}
 			R[low] = temp;
 		}
