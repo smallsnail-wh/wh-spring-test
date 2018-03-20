@@ -262,7 +262,31 @@ public class MyTest {
 
 	@Test
 	public void binarySearch() {
-		int r = 55;
+		
+		int temp = 8;
+		
+		int start = 0;
+		int end = r.length;
+		int mid = 0;
+		
+		while(start <= end) {
+			mid = (start+end)/2;
+			if(temp > r[mid]) {
+				start = mid+1;
+			}else if(temp < r[mid]){
+				end = mid-1;
+			}else if(temp == r[mid]) {
+				System.out.println(mid+1);
+				return;
+			}
+		}
+		
+		System.out.println(-1);
+		
+		
+		
+		
+		/*int r = 55;
 		int[] R = { 1, 3, 4, 8, 9, 13, 46, 78, 62, 102, 465 };
 		int start = 0;
 		int end = R.length - 1;
@@ -279,7 +303,7 @@ public class MyTest {
 				return;
 			}
 		}
-		System.out.print(-1);
+		System.out.print(-1);*/
 	}
 
 	private int count;
@@ -324,12 +348,24 @@ public class MyTest {
 
 	@Test
 	public void StringTest() {
-		StringBuffer builder = new StringBuffer();
+		/*String a = "a";
+		String b = "b";
+		String ab = "a"+"b";*/
+		String newa = new String("abc");
+		String newb = "abc";
+		if(newa == newb) {
+			System.out.println("ture");
+		}else {
+			System.out.println("false");
+		}
+		
+		
+		/*StringBuffer builder = new StringBuffer();
 		System.out.println(builder.hashCode());
 		builder.append("ab");
 		System.out.println(builder);
 		builder.append("cd");
-		System.out.println(builder.hashCode());
+		System.out.println(builder.hashCode());*/
 	}
 
 	@Test

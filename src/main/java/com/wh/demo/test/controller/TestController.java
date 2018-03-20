@@ -1,18 +1,17 @@
 package com.wh.demo.test.controller;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
-import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +19,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wh.demo.test.annotation.PrimayTest;
+import com.wh.demo.test.annotation.Requried;
 import com.wh.demo.test.dao.TestDao;
 import com.wh.demo.test.dao.UserDao;
 import com.wh.demo.test.model.TestEntity;
@@ -234,5 +235,23 @@ public class TestController {
 			System.out.println("MyRunnableThread 方法线程结束");
 		}
 	}
+	
+	@Resource(name= "primayTest2")
+	private PrimayTest primayTest;
+	
+	@GetMapping("/primaryTest")
+	public String primayTest() {
+		return String.valueOf(primayTest.getI());
+	}
 
+	@Autowired
+	private Requried requried;
+	
+	@GetMapping("/requriedTest")
+	public String requriedTest() {
+		requried.getModelTest().setI(10);
+		System.out.println(requried.getModelTest().getI());
+		return "SUCCESS";
+	}
+	
 }
