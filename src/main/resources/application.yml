@@ -13,6 +13,12 @@ spring:
     host: 127.0.0.1
     port: 6379
     password: null
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+    pool:
+      enabled: false
     
 mybatis:
   mapper-locations: classpath:com/wh/demo/test/dao/mapper/*.xml
