@@ -1,5 +1,6 @@
 package com.wh.demo.test;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
@@ -14,6 +15,29 @@ public class MyTest {
 	int[] arrayTemp = { 8, 3, 13, 4, 465, 9, 46, 62, 1, 102, 78 };
 	int[] r = { 1, 3, 4, 8, 9, 13, 46, 62, 78, 102, 465 };
 
+	@Test
+	public void sqrt() {
+		Double number = null;
+		 Math.sqrt(number);
+	}
+	
+	@Test
+	public void wei15() {
+		 double d = 114.1451242142349;
+		  BigDecimal b = new BigDecimal(d);
+		  d = b.setScale(12, BigDecimal.ROUND_DOWN).doubleValue();   
+		  
+		  System.out.println(d);
+
+		  double n1 = 10;
+		  double n2 = 3;
+		  double number = n1/n2;
+		  BigDecimal b2 = new BigDecimal(number);
+		  number = b2.setScale(15, BigDecimal.ROUND_DOWN).doubleValue();    
+		  System.out.format("%.10f \r\n", number);
+		  System.out.println(number);
+	}
+	
 	@Test
 	public void guibinSrot() {
 		fenMenthod(R, 0, R.length-1, arrayTemp);
