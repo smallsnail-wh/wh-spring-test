@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 8091
   servlet:
     context-path: /wh
 spring:
@@ -19,13 +19,20 @@ spring:
     password: admin
     pool:
       enabled: false
-    
+  resources:
+    static-locations:
+    - classpath:/META-INF/resources/
+    - classpath:/resources/
+    - classpath:/static/
+    - classpath:/public/
+    - file:${image.location}
 mybatis:
   mapper-locations: classpath:com/wh/demo/test/dao/mapper/*.xml
   type-aliases-package: com.wh.demo.test.model
-
 logging:
   level:
     org.springframework.web: DEBUG
     org.springframework.security: DEBUG
     com.wh: DEBUG
+image:
+  location: F:/myfile/image

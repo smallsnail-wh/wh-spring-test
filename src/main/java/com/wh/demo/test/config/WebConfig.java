@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.wh.demo.test.interceptor.MyInterceptor;
 
-@Configuration
+/*@Configuration
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
 
@@ -16,4 +16,4 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addInterceptor(new MyInterceptor()).addPathPatterns("/interceptor/**");
 	}
 
-}
+}*/

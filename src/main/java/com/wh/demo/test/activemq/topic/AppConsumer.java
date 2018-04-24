@@ -1,4 +1,4 @@
-package com.wh.demo.test.activemq.topic;
+/*package com.wh.demo.test.activemq.topic;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -53,3 +53,4 @@ public class AppConsumer {
 		return "SECCUSS";
 	}
 }
+*/
